@@ -1,14 +1,18 @@
-# AngularRDF
+## AngularRDF
 
 **_AngularJS bindings for RDF_**
 
-## Demo Installation
+### Demo Installation
 
 First you'll need a clone of this repository:
 
 **`git clone https://github.com/danja/angular-rdf.git`**
 
-### HTTP Server
+This should create a directory `angular-rdf`, move into it:
+
+**`cd angular-rdf`**
+
+#### HTTP Server
 
 A fairly minimal node.js HTTP server is provided for convenience. To use it, you should first [install node](https://nodejs.org/).
 

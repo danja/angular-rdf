@@ -19,9 +19,9 @@
   "RDF"
 ],
   "dependencies": {
-    "connect": "*",
-    "serve-static": "~0.8.0"
+    "connect": "~3.3",
+    "serve-static": "~0.1.9"
   },
   "preferGlobal": false,
-  "license": "Apache 2.0"
+  "license": "Apache-2.0"
 }
