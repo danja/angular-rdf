@@ -1,0 +1,27 @@
+{
+  "name": "angular-rdf",
+  "version": "0.1.1",
+  "description": "RDF bindings for AngularJS",
+  "author": "Danny Ayers <danny.ayers@gmail.com>",
+  "scripts": {
+    "start": "node utils/server.js",
+    "prepublish": "echo Setting up..."
+  },
+  "repository": {
+  "type": "git",
+  "url": "https://github.com/danja/angular-rdf"
+},
+  "bugs": {
+  "url": "https://github.com/danja/angular-rdf/issues"
+},
+  "keywords": [
+  "AngularJS",
+  "RDF"
+],
+  "dependencies": {
+    "connect": "*",
+    "serve-static": "~0.8.0"
+  },
+  "preferGlobal": false,
+  "license": "Apache 2.0"
+}

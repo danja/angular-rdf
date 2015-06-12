@@ -1,7 +1,8 @@
 # AngularRDF
-AngularJS bindings for RDF
 
-## Installation
+**_AngularJS bindings for RDF_**
+
+## Demo Installation
 
 First you'll need a clone of this repository:
 
@@ -9,10 +10,20 @@ First you'll need a clone of this repository:
 
 ### HTTP Server
 
-
-
 A fairly minimal node.js HTTP server is provided for convenience. To use it, you should first [install node](https://nodejs.org/).
-Then:
+
+Then run:
+
+**`npm install`**
+
+**`npm start`**
+
+Point a browser at:
+
+**`[http://localhost:8088/](http://localhost:8088/)`**
+
+- and you should see the demo application.
+
 
 
 
