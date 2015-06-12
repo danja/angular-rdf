@@ -4,7 +4,7 @@
   "description": "RDF bindings for AngularJS",
   "author": "Danny Ayers <danny.ayers@gmail.com>",
   "scripts": {
-    "start": "node utils/server.js",
+    "start": "node ./utils/server.js",
     "prepublish": "echo Setting up..."
   },
   "repository": {
