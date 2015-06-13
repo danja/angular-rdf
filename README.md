@@ -16,9 +16,9 @@ This should create a directory `angular-rdf`, move into it:
 
 A fairly minimal node.js HTTP server is provided for convenience. To use it, you should first [install node](https://nodejs.org/).
 
-Then run:
+Then install this (angular-rdf) with dependencies:
 
-**`npm install`**
+**`npm install`-d**
 
 **`npm start`**
 

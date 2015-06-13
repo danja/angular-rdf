@@ -1,5 +1,11 @@
 /* Minimal file-serving HTTP server */
 
 var connect = require('connect');
+var logger = require('morgan');
+
 var serveStatic = require('serve-static');
-connect().use(serveStatic("../public")).listen(8088);
+var serverPath = __dirname+"/../public";
+console.log(serverPath);
+connect()
+    .use(logger())
+    .use(serveStatic(serverPath)).listen(8088);
