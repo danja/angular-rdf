@@ -12,18 +12,17 @@
   <link rel="stylesheet" type="text/css" href="result-light.css">
   
     
-      <script type="text/javascript" src="js/lib/angular-1.0.0rc3.min.js"></script>
+      <script type="text/javascript" src="js/lib/angular.min.js"></script>
     
-     <!-- script type="text/javascript" src="js/lib/angular-1.0.0rc3.min.js"></script -->
+     <script type="text/javascript" src="js/lib/angular-1.0.0rc3.min.js"></script>
           <!-- script type="text/javascript" src="js/lib/angular-route.min.js"></script -->
     
+      <!-- script type="text/javascript" src="js/lib/angular-route.min.js"></script -->
     
     <style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak{display:none;}ng\:form{display:block;}</style>
-    
-  
-    
+        
       <script type="text/javascript" src="js/lib/underscore-min.js"></script>
-    
+     <script type="text/javascript" src="todo.js"></script>
   
   <style type="text/css">
     .done-true{
@@ -31,36 +30,6 @@
     color: grey;
 }
   </style>
-  
-
-
-<script type="text/javascript">//<![CDATA[ 
-
-function TodoCtrl($scope) {
-    $scope.todos = [
-        {text:'Learn AngularJS', done:false},
-        {text:'Build an app', done:false}
-    ];
-
-    $scope.getTotalTodos = function () {
-        return $scope.todos.length;
-    };
-
-    $scope.clearCompleted = function () {
-        $scope.todos = _.filter($scope.todos, function(todo){
-            return !todo.done;
-        });
-    };
-
-    $scope.addTodo = function () {
-        $scope.todos.push({text:$scope.formTodoText, done:false});
-        $scope.formTodoText = '';
-    };
-}
-//]]>  
-
-</script>
-
 
 </head>
 <body>
