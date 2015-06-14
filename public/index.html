@@ -9,7 +9,8 @@
     <script type="text/javascript" src="js/angular-rdf.js"></script>
 </head>
 
-<body ng-app="AngularRDF" class="ng-scope">    <script type="text/javascript" src="js/lib/rdf-ext.js"></script>
+<body ng-app="AngularRDF" class="ng-scope">
+    <script type="text/javascript" src="js/lib/rdf-ext.js"></script>
     <div ng-app="AngularRDF">
         <div ng-controller="rdfController">
 
@@ -18,8 +19,64 @@
             <div class="{{data.message}}">
                 Wrap me in a foundation component
             </div>
+<hr/>
+            <!-- button ng-click="toggle()">Hide user</button -->
+
+<!-- you can't bind ng-model directly to a function, but you can use the getterSetter option
+
+ <label>Name:
+      <input type="text" name="userName"
+             ng-model="user.name"
+             ng-model-options="{ getterSetter: true }" />
+    </label>
+
+      ng-model="node.object('s:givenName')">
+ng-model="node.object('s:familyName')">
+
+<input ng-model="pageModel.myGetterSetterFunc"
+ng-model-options=" {getterSetter: true }">
+
+Full Name: {{node.object('s:givenName') + " " + node.object('s:familyName')}}
+
+-->
+            <!-- p ng-hide="myVar" -->
+                First Name:
+                <input type=text 
+                       ng-model-options="{ getterSetter: true }"
+                      ng-model="nodeModel.givenName">
+                <br>Last Name:
+                <input type=text 
+                       ng-model-options="{ getterSetter: true }"
+                       ng-model="nodeModel.familyName">
+                <br>
+                <p>Full Name: {{nodeModel.givenName}} {{nodeModel.familyName}}</p>
+
         </div>
     </div>
 
 </body>
+
 </html>
+
+<!--
+            <p ng-hide="myVar">
+                First Name:
+                <input type=text ng-model="s:givenName">
+                <br>Last Name:
+                <input type=text ng-model="s:familyName">
+                <br>
+                <br>Full Name: {{s:givenName + " " + s:familyName}}
+            </p>
+-->
+
+<!-- div ng-app="myApp" ng-controller="personCtrl">
+
+<button ng-click="toggle()">Hide user</button>
+
+<p ng-hide="myVar">
+First Name: <input type=text ng-model="s:givenName"><br>
+Last Name: <input type=text ng-model="s:familyName"><br><br>
+Full Name: {{s:givenName + " " + s:familyName}}
+</p>
+
+</div -->

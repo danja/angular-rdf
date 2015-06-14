@@ -46,6 +46,12 @@ then
 
 **`webdriver-manager start`**
 
+#### Generating Documentation
+
+sudo npm install -g jsdoc
+
+
+
 
 
 
