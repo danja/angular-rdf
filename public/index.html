@@ -43,17 +43,20 @@ Full Name: {{node.object('s:givenName') + " " + node.object('s:familyName')}}
                 First Name:
                 <input type=text 
                        ng-model-options="{ getterSetter: true }"
-                      ng-model="nodeModel.givenName">
+                      ng-model="model.givenName">
                 <br>Last Name:
                 <input type=text 
                        ng-model-options="{ getterSetter: true }"
-                       ng-model="nodeModel.familyName">
+                       ng-model="model.familyName">
                 <br>
-                <p>Full Name: {{nodeModel.givenName}} {{nodeModel.familyName}}</p>
+                <p>Full Name: {{model.givenName}} {{model.familyName}}</p>
 
         </div>
     </div>
 
+    <hr/>
+    
+    <pre  ng-controller="rdfController">{{ turtleString }}</pre>
 </body>
 
 </html>

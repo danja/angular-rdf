@@ -5,13 +5,30 @@ angular.module('AngularRDF', [])
 
     $scope.dataUrl = "http://localhost:8088/data/sheldon.ttl";
     $scope.subject = "http://localhost:8080/data/person/sheldon-cooper";
+
+    $scope.store = new rdf.LdpStore();
     // $scope.node = new Object();
-   // $scope.givenName = "";
- //   $scope.familyName = "";
+    // $scope.givenName = "";
+    //   $scope.familyName = "";
 
     $scope.data = {
         message: "Hello"
     };
+
+
+    $scope.store.match("http://localhost:8088/data/sheldon.ttl",
+        null,
+        null,
+        null,
+        function (graph) {
+         //   console.log(graph.toArray()[0].object.toString());
+            $scope.turtleString = graph.toArray().join("\n").toString();
+            $scope.$apply();
+        // console.log($scope.turtleString);
+        }
+    );
+
+
 
     $scope.double = function (value) {
         return value * 2;
@@ -21,23 +38,22 @@ angular.module('AngularRDF', [])
     $scope.pageModel.firstName = '';
 $scope.pageModel.myGetterSetterFunc: function (value) {
 */
-    $scope.nodeModel = new Object();
-    
-    $scope.nodeModel.givenNameGS = function (value) {
+    $scope.model = new Object();
+
+    $scope.model.givenNameGS = function (value) {
 
         if (angular.isDefined(value)) {
-            $scope.nodeModel.givenName  = value;
+            $scope.model.givenName = value;
         }
-        return $scope.nodeModel.givenName ;
-
+        return $scope.model.givenName;
     };
 
-    $scope.nodeModel.familyNameGS = function (value) {
+    $scope.model.familyNameGS = function (value) {
 
         if (angular.isDefined(value)) {
-            $scope.nodeModel.familyName = value;
+            $scope.model.familyName = value;
         }
-        return $scope.nodeModel.familyName;
+        return $scope.model.familyName;
 
     };
 
