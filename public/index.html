@@ -1,59 +1,25 @@
 <!DOCTYPE html>
-<!-- saved from url=(0056)http://fiddle.jshell.net/johnlindquist/U3c2Q/show/light/ -->
-<html ng-app="" class="ng-scope"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  
-  <title> - jsFiddle demo by johnlindquist</title>
-  
-  <script type="text/javascript" src="dummy.js"></script>
-  
-  <link rel="stylesheet" type="text/css" href="normalize(1).css">
-  
-  
-  <link rel="stylesheet" type="text/css" href="result-light.css">
-  
-    
-      <script type="text/javascript" src="js/lib/angular.min.js"></script>
-    
-     <script type="text/javascript" src="js/lib/angular-1.0.0rc3.min.js"></script>
-          <!-- script type="text/javascript" src="js/lib/angular-route.min.js"></script -->
-    
-      <!-- script type="text/javascript" src="js/lib/angular-route.min.js"></script -->
-    
-    <style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak{display:none;}ng\:form{display:block;}</style>
-        
-      <script type="text/javascript" src="js/lib/underscore-min.js"></script>
-     <script type="text/javascript" src="todo.js"></script>
-  
-  <style type="text/css">
-    .done-true{
-    text-decoration: line-through;
-    color: grey;
-}
-  </style>
+<html>
 
+<head>
+    <title>Minimal Angular Demo</title>
+    <script type="text/javascript" src="../js/lib/angular.min.js"></script>
+    <script type="text/javascript" src="js/lib/rdfi.js"></script>
+    <script type="text/javascript" src="js/lib/rdf-ext.js"></script>
+    <script type="text/javascript" src="js/angular-rdf.js"></script>
 </head>
-<body>
-<div ng-controller="TodoCtrl">
-    <h2>Total todos: {{getTotalTodos()}}</h2>
-    <ul class="unstyled">
-        <li ng-repeat="todo in todos">
-            <input type="checkbox" ng-model="todo.done">
-            <span class="done-{{todo.done}}">{{todo.text}}</span>
-        </li>
-    </ul>
-    <form class="form-horizontal">
-        <input type="text" ng-model="formTodoText" ng-model-instant>
-        <button class="btn" ng-click="addTodo()"><i class="icon-plus"></i>Add</button>
-    </form>
 
-    <button class="btn-large" ng-click="clearCompleted()"><i class="icon-trash"></i>Clear Completed</button>
-</div>
+<body ng-app="AngularRDF" class="ng-scope">    <script type="text/javascript" src="js/lib/rdf-ext.js"></script>
+    <div ng-app="AngularRDF">
+        <div ng-controller="rdfController">
 
+            <h1> {{data.message + " world"}}</h1>
 
-  
+            <div class="{{data.message}}">
+                Wrap me in a foundation component
+            </div>
+        </div>
+    </div>
 
-
-
-
-
-</body></html>
+</body>
+</html>

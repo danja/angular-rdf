@@ -1,0 +1,21 @@
+
+<http://localhost:8080/data/person/sheldon-cooper> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Person> .
+<http://localhost:8080/data/person/sheldon-cooper> <http://schema.org/additionalName> "Lee" .
+<http://localhost:8080/data/person/sheldon-cooper> <http://schema.org/address> _:b4 .
+<http://localhost:8080/data/person/sheldon-cooper> <http://schema.org/familyName> "Cooper" .
+<http://localhost:8080/data/person/sheldon-cooper> <http://schema.org/givenName> "Sheldon" .
+<http://localhost:8080/data/person/sheldon-cooper> <http://schema.org/jobTitle> "theoretical physicist" .
+<http://localhost:8080/data/person/sheldon-cooper> <http://schema.org/knows> <http://localhost:8080/data/person/amy-farrah-fowler> .
+<http://localhost:8080/data/person/sheldon-cooper> <http://schema.org/knows> <http://localhost:8080/data/person/bernadette-rostenkowski> .
+<http://localhost:8080/data/person/sheldon-cooper> <http://schema.org/knows> <http://localhost:8080/data/person/howard-wolowitz> .
+<http://localhost:8080/data/person/sheldon-cooper> <http://schema.org/knows> <http://localhost:8080/data/person/leonard-hofstadter> .
+<http://localhost:8080/data/person/sheldon-cooper> <http://schema.org/knows> <http://localhost:8080/data/person/penny> .
+<http://localhost:8080/data/person/sheldon-cooper> <http://schema.org/knows> <http://localhost:8080/data/person/rajesh-koothrappali> .
+<http://localhost:8080/data/person/sheldon-cooper> <http://schema.org/knows> <http://localhost:8080/data/person/stuart-bloom> .
+<http://localhost:8080/data/person/sheldon-cooper> <http://schema.org/parent> <http://localhost:8080/data/person/mary-cooper> .
+_:b4 <http://schema.org/addressCountry> "US" .
+_:b4 <http://schema.org/addressLocality> "Pasadena" .
+_:b4 <http://schema.org/addressRegion> "CA" .
+_:b4 <http://schema.org/postalCode> "91104" .
+_:b4 <http://schema.org/streetAddress> "2311 North Los Robles Avenue, Aparment 4A" .
+

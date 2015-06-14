@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!-- html ng-app="" class="ng-scope" -->
+<html ng-app="app">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Small Angularjs Demo</title>
+
+    <link rel="stylesheet" type="text/css" href="normalize(1).css">
+    <link rel="stylesheet" type="text/css" href="result-light.css">
+
+    <script type="text/javascript" src="../js/lib/angular.js"></script>
+    <script type="text/javascript" src="../js/lib/angular-route.js"></script>
+    <script type="text/javascript" src="../js/lib/underscore-min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+    
+    <!-- script type="text/javascript" src="js/lib/angular-1.0.0rc3.min.js"></script -->
+</head>
+<body>
+
+<div id="ctrl-exmpl" ng-controller="SettingsController2">
+  <label>Name: <input type="text" ng-model="name"/></label>
+  <button ng-click="greet()">greet</button><br/>
+  Contact:
+  <ul>
+    <li ng-repeat="contact in contacts">
+      <select ng-model="contact.type" id="select_{{$index}}">
+         <option>phone</option>
+         <option>email</option>
+      </select>
+      <input type="text" ng-model="contact.value" aria-labelledby="select_{{$index}}" />
+      <button ng-click="clearContact(contact)">clear</button>
+      <button ng-click="removeContact(contact)">X</button>
+    </li>
+    <li>[ <button ng-click="addContact()">add</button> ]</li>
+ </ul>
+</div>
+    
+</body>
+</html>

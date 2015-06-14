@@ -1,0 +1,18 @@
+.done-true {
+        text-decoration: line-through;
+        color: grey;
+    }
+    
+@charset "UTF-8";
+    [ng\:cloak],
+    [ng-cloak],
+    [data-ng-cloak],
+    [x-ng-cloak],
+    .ng-cloak,
+    .x-ng-cloak {
+        display: none;
+    }
+    
+ng\:form {
+        display: block;
+    }

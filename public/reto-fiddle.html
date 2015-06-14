@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!-- html ng-app="" class="ng-scope" -->
+<html ng-app="app">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Small Angularjs Demo</title>
+
+    <link rel="stylesheet" type="text/css" href="normalize(1).css">
+    <link rel="stylesheet" type="text/css" href="result-light.css">
+
+    <script type="text/javascript" src="../js/lib/angular.js"></script>
+    <script type="text/javascript" src="../js/lib/angular-route.js"></script>
+    <script type="text/javascript" src="../js/lib/underscore-min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+    
+    <!-- script type="text/javascript" src="js/lib/angular-1.0.0rc3.min.js"></script -->
+</head>
+<body>
+
+<div ng-app="myApp" ng-controller="personCtrl">
+
+<button ng-click="toggle()">Hide user</button>
+
+<p ng-hide="myVar">
+First Name: <input type=text ng-model="s:givenName"><br>
+Last Name: <input type=text ng-model="s:familyName"><br><br>
+Full Name: {{s:givenName + " " + s:familyName}}
+</p>
+
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+    var store = new rdf.LdpStore();
+    store.match("http://tbbt.zazukoians.org/data/person/sheldon-cooper",
+                    null,
+                    null,
+                    null,
+                    function (data) {
+    console.log(data.toString());
+    app.controller('personCtrl', RdfNode(data, "http://tbbt.zazukoians.org/data/person/sheldon-cooper"));
+});
+</script> 
+
+</body>
+</html>
+
