@@ -30,6 +30,12 @@ Point a browser at:
 
 - and you should see the demo application.
 
+Point a browser at:
+
+**`http://localhost:8088/data/sheldon.ttl`**
+
+- and you should see some Turtle data
+
 #### Tests
 
 * "Protractor is an end-to-end test framework for AngularJS applications. Protractor runs tests against your application running in a real browser, interacting with it as a user would.", see https://angular.github.io/protractor/ and http://www.ng-newsletter.com/posts/practical-protractor.html *

@@ -7,6 +7,10 @@ angular.module('AngularRDF', [])
     $scope.subject = "http://localhost:8080/data/person/sheldon-cooper";
 
     $scope.store = new rdf.LdpStore();
+
+    // start node
+    //   $scope.rdfNode = $scope.cf.node($scope.subject);
+
     // $scope.node = new Object();
     // $scope.givenName = "";
     //   $scope.familyName = "";
@@ -15,18 +19,23 @@ angular.module('AngularRDF', [])
         message: "Hello"
     };
 
+    // Angular has its own $http, see http://stackoverflow.com/questions/21667613/in-angular-how-to-pass-json-object-array-into-directive
 
-    $scope.store.match("http://localhost:8088/data/sheldon.ttl",
-        null,
-        null,
-        null,
-        function (graph) {
-            //   console.log(graph.toArray()[0].object.toString());
-            $scope.turtleString = graph.toArray().join("\n").toString();
-            $scope.$apply();
-            // console.log($scope.turtleString);
-        }
-    );
+    //  $scope.store.match("http://localhost:8088/data/sheldon.ttl",
+    //   null,
+    //     null,
+    //    null,
+    //                function (graph) {
+    $scope.store.graph($scope.dataUrl, function (graph) {
+
+        //   console.log(graph.toArray()[0].object.toString());
+        $scope.turtleString = graph.toArray().join("\n").toString();
+
+        $scope.cf = rdf.cf.Store($scope.store); // clownface, for graph traversal
+
+        $scope.$apply();
+        // console.log($scope.turtleString);
+    });
 
 
 
@@ -35,6 +44,7 @@ angular.module('AngularRDF', [])
     };
 
 
+    // this one
     $scope.node = {};
 
     $scope.node.object = function (name, value) {
@@ -46,6 +56,9 @@ angular.module('AngularRDF', [])
         }
         return $scope.node.object;
     };
+
+
+
 });
 
 
