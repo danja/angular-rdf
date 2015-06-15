@@ -47,17 +47,17 @@ app.controller('rdfController', ['$scope', '$attrs', '$q', '$log',
             if (error) {
                 console.log(error);
             } else {
-               
+
                 console.log("Successfully fetched %d triples", graph.length);
-                
-                 // render data
+
+                // render data
                 $scope.turtleString = graph.toArray().join("\n").toString();
                 $scope.$apply(); // trigger sync
 
                 $scope.node = {};
-                
+
                 $scope.node.x = function (value) {
-                    
+
                     var name = $attrs.property;
                     $log.info("value  in node.x = " + value);
 
@@ -84,7 +84,7 @@ app.controller('rdfController', ['$scope', '$attrs', '$q', '$log',
 
                 $scope.node.object = function (name, value) {
                     var name = $attrs.property;
-                    $log.info("value in node.object = " + value+ " name = "+name);
+                    $log.info("value in node.object = " + value + " name = " + name);
 
                     var split = name.split(":");
                     if (split.length > 1) {
@@ -93,9 +93,9 @@ app.controller('rdfController', ['$scope', '$attrs', '$q', '$log',
 
                     $log.info("name = " + name);
                     // $log.info("cf = " + $scope.cf);
-                    $log.info("calling setLiteral with " + subject + "  " + name + "  " + value);
-                    if (value && (typeof(value) != "undefined") && (""+value) != "undefined") { // angular.isDefined(value) && 
 
+                    if (value && (typeof (value) != "undefined") && ("" + value) != "undefined") { // angular.isDefined(value) && 
+                        $log.info("calling setLiteral with " + subject + "  " + name + "  " + value);
                         setLiteral(subject, name, value);
                         // return "r";
                     } else {
