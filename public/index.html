@@ -40,6 +40,8 @@ Full Name: {{node.object('s:givenName') + " " + node.object('s:familyName')}}
 
 -->
             <!-- p ng-hide="myVar" -->
+            
+            <!-- WORKED
                 First Name:
                 <input type=text 
                        ng-model-options="{ getterSetter: true }"
@@ -50,6 +52,18 @@ Full Name: {{node.object('s:givenName') + " " + node.object('s:familyName')}}
                        ng-model="model.familyName">
                 <br>
                 <p>Full Name: {{model.givenName}} {{model.familyName}}</p>
+-->
+            
+            First Name:
+                <input type=text 
+                       ng-model-options="{ getterSetter: true }"
+                      ng-model="node.object['s:givenName']">
+                <br>Last Name:
+                <input type=text 
+                       ng-model-options="{ getterSetter: true }"
+                       ng-model="node.object['s:familyName']">
+                <br>
+                <p>Full Name: {{ node.object['s:givenName'] }} {{ node.object['s:familyName'] }}</p>
 
         </div>
     </div>

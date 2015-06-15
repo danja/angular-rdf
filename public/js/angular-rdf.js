@@ -21,10 +21,10 @@ angular.module('AngularRDF', [])
         null,
         null,
         function (graph) {
-         //   console.log(graph.toArray()[0].object.toString());
+            //   console.log(graph.toArray()[0].object.toString());
             $scope.turtleString = graph.toArray().join("\n").toString();
             $scope.$apply();
-        // console.log($scope.turtleString);
+            // console.log($scope.turtleString);
         }
     );
 
@@ -34,29 +34,18 @@ angular.module('AngularRDF', [])
         return value * 2;
     };
 
-    /*
-    $scope.pageModel.firstName = '';
-$scope.pageModel.myGetterSetterFunc: function (value) {
-*/
-    $scope.model = new Object();
 
-    $scope.model.givenNameGS = function (value) {
+    $scope.node = {};
+
+    $scope.node.object = function (name, value) {
 
         if (angular.isDefined(value)) {
-            $scope.model.givenName = value;
+            $scope.node.object = {
+                name, value
+            };
         }
-        return $scope.model.givenName;
+        return $scope.node.object;
     };
-
-    $scope.model.familyNameGS = function (value) {
-
-        if (angular.isDefined(value)) {
-            $scope.model.familyName = value;
-        }
-        return $scope.model.familyName;
-
-    };
-
 });
 
 
