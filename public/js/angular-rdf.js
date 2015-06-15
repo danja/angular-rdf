@@ -56,9 +56,11 @@ app.controller('rdfController', ['$scope', '$attrs', '$q', '$log',
 
                 $scope.node = {};
 
+                // two slightly different versions, both fairly close
+
                 $scope.node.x = function (value) {
 
-                    var name = $attrs.property;
+                    var name = $attrs.property; // sometimes it works, sometimes it doesn't !??
                     $log.info("value  in node.x = " + value);
 
                     var split = name.split(":");
@@ -68,9 +70,9 @@ app.controller('rdfController', ['$scope', '$attrs', '$q', '$log',
 
                     $log.info("name = " + name);
                     // $log.info("cf = " + $scope.cf);
-                    $log.info("calling setLiteral with " + subject + "  " + name + "  " + value);
-                    if (value) { // angular.isDefined(value) && 
 
+                    if (value && (typeof (value) != "undefined") && ("" + value) != "undefined") {
+                        $log.info("calling setLiteral with " + subject + "  " + name + "  " + value);
                         setLiteral(subject, name, value);
                         // return "r";
                     } else {
@@ -83,7 +85,10 @@ app.controller('rdfController', ['$scope', '$attrs', '$q', '$log',
                 }
 
                 $scope.node.object = function (name, value) {
-                    var name = $attrs.property;
+                    var name = $attrs.property; // sometimes it works, sometimes it doesn't !??
+                    if (!name || (typeof (name) == "undefined") || ("" + name) == "undefined") {
+                        return "waiting";
+                    }
                     $log.info("value in node.object = " + value + " name = " + name);
 
                     var split = name.split(":");
@@ -94,7 +99,7 @@ app.controller('rdfController', ['$scope', '$attrs', '$q', '$log',
                     $log.info("name = " + name);
                     // $log.info("cf = " + $scope.cf);
 
-                    if (value && (typeof (value) != "undefined") && ("" + value) != "undefined") { // angular.isDefined(value) && 
+                    if (value && (typeof (value) != "undefined") && ("" + value) != "undefined") {
                         $log.info("calling setLiteral with " + subject + "  " + name + "  " + value);
                         setLiteral(subject, name, value);
                         // return "r";
@@ -113,8 +118,9 @@ app.controller('rdfController', ['$scope', '$attrs', '$q', '$log',
             $log.info("getLiteral called with s=" + s + " p=" + p);
 
             var matches = $scope.graph.match(s, p, null);
-            //            console.log("matches = " + matches.length);
+            console.log("matches = " + matches.length);
             matches = matches.toArray();
+
             var o = matches[0].object.toString();
             console.log("getLiteral o = " + o);
             return o;
