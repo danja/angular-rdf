@@ -43,11 +43,13 @@ app.controller('rdfController', ['$scope', '$attrs', '$q', '$log',
          * @returns {Number}
          */
         $scope.store.graph(dataUrl, function (graph, error) {
-            $scope.graph = graph;
+
+            $log.info("graph size = " + $scope.store.graph.length);
+     
             if (error) {
                 console.log(error);
             } else {
-
+                $scope.graph = graph;
                 console.log("Successfully fetched %d triples", graph.length);
 
                 // render data
@@ -74,9 +76,9 @@ app.controller('rdfController', ['$scope', '$attrs', '$q', '$log',
                     if (value && (typeof (value) != "undefined") && ("" + value) != "undefined") {
                         $log.info("calling setLiteral with " + subject + "  " + name + "  " + value);
                         setLiteral(subject, name, value);
-                                        $scope.turtleString = $scope.graph.toArray().join("\n").toString();
-                $scope.$apply(); // trigger sync
-                        $log.info("after setter \n"+ $scope.turtleString);
+                        $scope.turtleString = $scope.graph.toArray().join("\n").toString();
+                        $scope.$apply(); // trigger sync
+                        $log.info("after setter \n" + $scope.turtleString);
                         // return "r";
                     } else {
                         var objectNode = getLiteral(subject, name);
@@ -87,6 +89,7 @@ app.controller('rdfController', ['$scope', '$attrs', '$q', '$log',
                     }
                 }
 
+                /*
                 $scope.node.object = function (name, value) {
                     var name = $attrs.property; // sometimes it works, sometimes it doesn't !??
                     if (!name || (typeof (name) == "undefined") || ("" + name) == "undefined") {
@@ -112,7 +115,7 @@ app.controller('rdfController', ['$scope', '$attrs', '$q', '$log',
                         return objectNode;
                     }
                 }
-
+                */
             }
         });
 
@@ -127,16 +130,6 @@ app.controller('rdfController', ['$scope', '$attrs', '$q', '$log',
             var o = matches[0].object.toString();
             console.log("getLiteral o = " + o);
             return o;
-
-            // clownface lookup
-            // .out should search subject->object', function () {
-            //  $log.info("getLiteral $scope.cf = " + $scope.cf);
-            /*
-            $scope.cf.node(s, null, function (result) {
-                var resultArray = result.out(p).nodes();
-                return resultArray[0].toString();
-            });
-            */
         }
 
         // test it clears multiple values in graph
@@ -148,11 +141,11 @@ app.controller('rdfController', ['$scope', '$attrs', '$q', '$log',
             var o = rdf.createLiteral(oString, null, null);
 
             $scope.graph.removeMatches(s, p, null);
-            
-              $log.info("after remove \n"+ $scope.turtleString);
+
+            $log.info("after remove \n" + $scope.turtleString);
             $scope.graph.add(new rdf.Triple(s, p, o));
-                 $log.info("after add \n"+ $scope.turtleString);
-             $scope.turtleString = $scope.graph.toArray().join("\n").toString();
-             $scope.$apply(); // trigger sync
+            $log.info("after add \n" + $scope.turtleString);
+            $scope.turtleString = $scope.graph.toArray().join("\n").toString();
+            //   $scope.$apply(); // trigger sync
         }
 }]);
