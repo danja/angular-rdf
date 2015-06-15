@@ -17,7 +17,9 @@
             <h1> {{data.message + " there"}}</h1>
 
             <hr/>Full Name: {{ node.object('s:givenName') }} {{ node.object('s:familyName') }}
-                      <hr/>Full Namex: {{ node.x}} {{ node.x }}
+            
+            <div ng-controller="rdfController" data-property="s:givenName" >Full Namex: {{ node.x}} {{ node.x }}</div>
+            
             <br/>First a Name:
             <input type="text" ng-controller="rdfController" data-property="s:givenName" ng-model-options="{ getterSetter: true }" ng-model="node.x">
             <br>Last Name:

@@ -7,7 +7,7 @@ var subject = "http://localhost:8080/data/person/sheldon-cooper";
 
 var app = angular.module('AngularRDF', []);
 
-app.directive("myDirective", function () {
+app.directive("myDirective", function () { // not yet used
     return {
         restrict: "A",
         scope: {
@@ -21,9 +21,7 @@ app.controller('rdfController', ['$scope', '$attrs', '$q', '$log',
     function ($scope, $attrs, $q, $log) {
 
         $log.info("PROPERTY = " + $attrs.property);
-
-        //  .controller('LogController', ['$scope', '$log', function($scope, $log) {
-        $scope.$log = $log;
+     //   $scope.$log = $log;
 
         console.log("controller called");
 
@@ -49,7 +47,9 @@ app.controller('rdfController', ['$scope', '$attrs', '$q', '$log',
             if (error) {
                 console.log(error);
             } else {
+                if(!$scope.graph || $scope.store.graph.length == 0) { // hacky temp - shouldn't be re-loading the data
                 $scope.graph = graph;
+                }
                 console.log("Successfully fetched %d triples", graph.length);
 
                 // render data
@@ -77,45 +77,15 @@ app.controller('rdfController', ['$scope', '$attrs', '$q', '$log',
                         $log.info("calling setLiteral with " + subject + "  " + name + "  " + value);
                         setLiteral(subject, name, value);
                         $scope.turtleString = $scope.graph.toArray().join("\n").toString();
-                        $scope.$apply(); // trigger sync
+                      //  $scope.$apply(); // trigger sync
                         $log.info("after setter \n" + $scope.turtleString);
                         // return "r";
                     } else {
                         var objectNode = getLiteral(subject, name);
                         console.log("returning name = " + objectNode);
-
-
                         return objectNode;
                     }
                 }
-
-                /*
-                $scope.node.object = function (name, value) {
-                    var name = $attrs.property; // sometimes it works, sometimes it doesn't !??
-                    if (!name || (typeof (name) == "undefined") || ("" + name) == "undefined") {
-                        return "waiting";
-                    }
-                    $log.info("value in node.object = " + value + " name = " + name);
-
-                    var split = name.split(":");
-                    if (split.length > 1) {
-                        name = namespaceMap[split[0]] + split[1];
-                    }
-
-                    $log.info("name = " + name);
-                    // $log.info("cf = " + $scope.cf);
-
-                    if (value && (typeof (value) != "undefined") && ("" + value) != "undefined") {
-                        $log.info("calling setLiteral with " + subject + "  " + name + "  " + value);
-                        setLiteral(subject, name, value);
-                        // return "r";
-                    } else {
-                        var objectNode = getLiteral(subject, name);
-                        console.log("returning name = " + objectNode);
-                        return objectNode;
-                    }
-                }
-                */
             }
         });
 
@@ -136,14 +106,12 @@ app.controller('rdfController', ['$scope', '$attrs', '$q', '$log',
         function setLiteral(sString, pString, oString) {
             $log.info("setLiteral called with s=" + sString + " p=" + pString + " o=" + oString);
             // todo : check o is a string
-            var s = rdf.createNamedNode(sString)
-            var p = rdf.createNamedNode(pString);
-            var o = rdf.createLiteral(oString, null, null);
 
-            $scope.graph.removeMatches(s, p, null);
-
-            $log.info("after remove \n" + $scope.turtleString);
-            $scope.graph.add(new rdf.Triple(s, p, o));
+            $scope.graph.removeMatches(sString, pString, null);
+            // $log.info("after remove \n" + $scope.turtleString);
+            
+            // $scope.graph.add(new rdf.Triple(s, p, o));
+            $scope.graph.add(sString, pString, oString);
             $log.info("after add \n" + $scope.turtleString);
             $scope.turtleString = $scope.graph.toArray().join("\n").toString();
             //   $scope.$apply(); // trigger sync
