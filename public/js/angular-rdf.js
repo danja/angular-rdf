@@ -51,7 +51,7 @@ app.controller('rdfController', ['$scope', '$attrs', '$q', '$log',
                 console.log("Successfully fetched %d triples", graph.length);
 
                 // render data
-                $scope.turtleString = graph.toArray().join("\n").toString();
+                $scope.turtleString = $scope.graph.toArray().join("\n").toString();
                 $scope.$apply(); // trigger sync
 
                 $scope.node = {};
@@ -74,6 +74,9 @@ app.controller('rdfController', ['$scope', '$attrs', '$q', '$log',
                     if (value && (typeof (value) != "undefined") && ("" + value) != "undefined") {
                         $log.info("calling setLiteral with " + subject + "  " + name + "  " + value);
                         setLiteral(subject, name, value);
+                                        $scope.turtleString = $scope.graph.toArray().join("\n").toString();
+                $scope.$apply(); // trigger sync
+                        $log.info("after setter \n"+ $scope.turtleString);
                         // return "r";
                     } else {
                         var objectNode = getLiteral(subject, name);
@@ -145,6 +148,11 @@ app.controller('rdfController', ['$scope', '$attrs', '$q', '$log',
             var o = rdf.createLiteral(oString, null, null);
 
             $scope.graph.removeMatches(s, p, null);
-            $scope.store.add(s, p, o);
+            
+              $log.info("after remove \n"+ $scope.turtleString);
+            $scope.graph.add(new rdf.Triple(s, p, o));
+                 $log.info("after add \n"+ $scope.turtleString);
+             $scope.turtleString = $scope.graph.toArray().join("\n").toString();
+             $scope.$apply(); // trigger sync
         }
 }]);
