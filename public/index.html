@@ -14,62 +14,21 @@
     <div ng-app="AngularRDF">
         <div ng-controller="rdfController">
 
-            <h1> {{data.message + " world"}}</h1>
+            <h1> {{data.message + " there"}}</h1>
 
-            <div class="{{data.message}}">
-                Wrap me in a foundation component
-            </div>
-            <hr/>
-            <!-- button ng-click="toggle()">Hide user</button -->
-
-            <!-- you can't bind ng-model directly to a function, but you can use the getterSetter option
-
- <label>Name:
-      <input type="text" name="userName"
-             ng-model="user.name"
-             ng-model-options="{ getterSetter: true }" />
-    </label>
-
-      ng-model="node.object('s:givenName')">
-ng-model="node.object('s:familyName')">
-
-<input ng-model="pageModel.myGetterSetterFunc"
-ng-model-options=" {getterSetter: true }">
-
-Full Name: {{node.object('s:givenName') + " " + node.object('s:familyName')}}
-
--->
-            <!-- p ng-hide="myVar" -->
-
-            <!-- WORKED
-                First Name:
-                <input type=text 
-                       ng-model-options="{ getterSetter: true }"
-                      ng-model="model.givenName">
-                <br>Last Name:
-                <input type=text 
-                       ng-model-options="{ getterSetter: true }"
-                       ng-model="model.familyName">
-                <br>
-                <p>Full Name: {{model.givenName}} {{model.familyName}}</p>
-
-            <!-- {{ $log.info("handling HTML") }} -->
-
-            <!--   Possible him: {{ node.object('s:givenName', null) }}
-            <br/>
--->
-Full Name: {{ node.object('s:givenName') }} {{ node.object('s:familyName') }}
-
-            <br/>First Name:
-            <input type=text ng-model-options="{ getterSetter: true }" ng-model="node.object('s:givenName', null)">
+            <hr/>Full Name: {{ node.object('s:givenName') }} {{ node.object('s:familyName') }}
+            <br/>First a Name:
+            <input type="text" ng-controller="rdfController" data-property="s:givenName" ng-model-options="{ getterSetter: true }" ng-model="node.x">
             <br>Last Name:
-            <input type=text ng-model-options="{ getterSetter: true }" ng-model="node.object['s:familyName']">
+            <!-- input type=text ng-controller="rdfController" data-property="s:givenName" ng-model-options="{ getterSetter: true }" ng-model="node.object['s:familyName']"></input -->
+            <input type=text ng-controller="rdfController" data-property="s:familyName" ng-model-options="{ getterSetter: true }" ng-model="node.x"></input>
             <br>
             <p>Full Name: {{ node.object['s:givenName'] }} {{ node.object['s:familyName'] }}</p>
 
         </div>
     </div>
-
+    <hr/>
+    </div>
     <hr/>
 
     <pre ng-controller="rdfController">{{ turtleString }}</pre>
@@ -77,25 +36,4 @@ Full Name: {{ node.object('s:givenName') }} {{ node.object('s:familyName') }}
 
 </html>
 
-<!--
-            <p ng-hide="myVar">
-                First Name:
-                <input type=text ng-model="s:givenName">
-                <br>Last Name:
-                <input type=text ng-model="s:familyName">
-                <br>
-                <br>Full Name: {{s:givenName + " " + s:familyName}}
-            </p>
--->
 
-<!-- div ng-app="myApp" ng-controller="personCtrl">
-
-<button ng-click="toggle()">Hide user</button>
-
-<p ng-hide="myVar">
-First Name: <input type=text ng-model="s:givenName"><br>
-Last Name: <input type=text ng-model="s:familyName"><br><br>
-Full Name: {{s:givenName + " " + s:familyName}}
-</p>
-
-</div -->
