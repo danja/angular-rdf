@@ -18,15 +18,15 @@
 
             <hr/>Full Name: {{ node.object('s:givenName') }} {{ node.object('s:familyName') }}
             
-            <div ng-controller="rdfController" data-property="s:givenName" >Full Namex: {{ node.x}} {{ node.x }}</div>
+            <div ng-controller="rdfController" data-property="s:givenName" >Full Namex: {{ node.object}} {{ node.object }}</div>
             
             <br/>First a Name:
-            <input type="text" ng-controller="rdfController" data-property="s:givenName" ng-model-options="{ getterSetter: true }" ng-model="node.x">
+            <input type="text" ng-controller="rdfController" data-property="s:givenName" ng-model-options="{ getterSetter: true }" ng-model="node.object">
             <br>Last Name:
             <!-- input type=text ng-controller="rdfController" data-property="s:givenName" ng-model-options="{ getterSetter: true }" ng-model="node.object['s:familyName']"></input -->
-            <input type=text ng-controller="rdfController" data-property="s:familyName" ng-model-options="{ getterSetter: true }" ng-model="node.x"></input>
+            <input type=text ng-controller="rdfController" data-property="s:familyName" ng-model-options="{ getterSetter: true }" ng-model="node.object"></input>
             <br>
-            <p>Full Name: {{ node.object['s:givenName'] }} {{ node.object['s:familyName'] }}</p>
+            <p>Full Name: {{ object.s_givenName }} {{ object.s_familyName }}</p>
 
         </div>
     </div>

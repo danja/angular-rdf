@@ -60,13 +60,13 @@ app.controller('rdfController', ['$scope', '$attrs', '$q', '$log',
 
                 // two slightly different versions, both fairly close
 
-                $scope.node.x = function (value) {
+                $scope.node.object = function (value) {
 
                     var name = $attrs.property; // sometimes it works, sometimes it doesn't !??
                      if (!name || (typeof (name) == "undefined") || ("" + name) == "undefined") {
                          return;
                      }
-                    $log.info("value  in node.x = " + value);
+                    $log.info("value  in node.object = " + value);
 
                     var split = name.split(":");
                     if (split.length > 1) {
@@ -120,7 +120,7 @@ app.controller('rdfController', ['$scope', '$attrs', '$q', '$log',
             $scope.graph.add(new rdf.Triple(s, p, o));
          //   $scope.graph.add(sString, pString, oString);
             $log.info("after add \n" + $scope.turtleString);
-            $scope.turtleString = $scope.graph.toArray().join("\n").toString();
-            //   $scope.$apply(); // trigger sync
+           // $scope.turtleString = $scope.graph.toArray().join("\n").toString();
+           $scope.$apply(); // trigger sync
         }
 }]);
